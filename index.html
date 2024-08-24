@@ -52,11 +52,35 @@
             <div class="social-icons">
                 <a href="https://www.youtube.com/@cuonggquocc2825/videos"><i class="fa-brands fa-youtube"></i></a>
                 <a href="https://discord.gg/KwnkFXZu8t"><i class="fa-brands fa-discord"></i></a>
-                <a href="#"><i class="fa-brands fa-github"></i></a>
-                <a href="#"><i class="fa-brands fa-x-twitter"></i></a>
-                <a href="#"><i class="fa-brands fa-instagram"></i></a>
+                <a href="https://pornhub.com"><i class="fa-brands fa-github"></i></a>
+                <a href="https://vlxx.lol/xnxx/"><i class="fa-brands fa-x-twitter"></i></a>
+                <a href="https://javhdz.cc/"><i class="fa-brands fa-instagram"></i></a>
             </div>
-            <a href="#" class="btn">Click me</a>
+            <!-- a button that cliked to show a popup notification in browser -->
+            <a href="#" class="btn" id="notification">Click 10 cái nhận quà!</a>
+            <!-- script -->
+            <script>
+                const notification = document.getElementById('notification');
+                notification.addEventListener('click', () => {
+                    Notification.requestPermission().then((result) => {
+                        if (result === 'granted') {
+                            randomNotification();
+                        }
+                    });
+                });
+
+                function randomNotification() {
+                    notification.onclick = (e) => {
+                        e.preventDefault();
+                        const options = {
+                            body: `CLICK CON CACCCC`,
+                            icon: 'img/v1.png'
+                        };
+                        new Notification('Hello world!', options);
+                    };
+                }
+            </script>
+
         </div>
     </section>
 </body>
