@@ -10,9 +10,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
     <link rel="stylesheet" href="style.css">
     <!-- favicon -->
-    <link rel="icon"
-        href="/public/favicon_io/favicon-32x32.png"
-        type="image/x-icon">
+    <link rel="icon" href="/public/favicon_io/favicon-32x32.png" type="image/x-icon">
     <title>YHM</title>
 </head>
 
@@ -61,33 +59,38 @@
 
             <!-- a button that cliked to show a popup notification in browser -->
             <a href="#" class="btn" id="notification">Click 10 cái nhận quà!</a>
-            <!-- script -->
-
-            <script>
-                const btn = document.getElementById('notification');
-                btn.addEventListener('click', () => {
-                    Notification.requestPermission().then((result) => {
-                        if (result === 'granted') {
-                            randomNotification();
-                        }
-                    });
-                });
-
-                function randomNotification() {
-                    const randomItem = Math.floor(Math.random() * 10);
-                    const notifTitle = 'Chúc mừng bạn đã nhận được quà!';
-                    const notifBody = `Bạn đã nhận được ${randomItem} cục cứt từ Yang Ho Mom!`;
-                    const options = {
-                        body: notifBody,
-                        icon: 'public/vite.svg'
-                    };
-
-                    new Notification(notifTitle, options);
-                }
-            </script>
-
         </div>
     </section>
+
+    <!-- script show a popup notification in browser -->
+    <script>
+        const notification = document.getElementById('notification');
+
+        notification.addEventListener('click', () => {
+            Notification.requestPermission().then((result) => {
+                if (result === 'granted') {
+                    randomNotification();
+                }
+            });
+        });
+
+        function randomNotification() {
+            const randomItem = Math.floor(Math.random() * 10);
+            const notifTitle = 'Thông báo';
+            const notifBody = `Click cc hehekekekek!`;
+            const options = {
+                body: notifBody,
+                icon: 'img/v1.png'
+            };
+
+            new Notification(notifTitle, options);
+        }
+    </script>
+
+    <footer>
+        <p>&copy; 2024 <span>Yang Ho Mom</span>. All rights reserved.</p>
+    </footer>
+
 </body>
 
 </html>
