@@ -38,16 +38,15 @@
                 và khả năng vượt qua mọi thử thách.
                 <br>
                 <br>
-                Chúng tôi sẽ kể cho bạn những câu chuyện phiêu lưu đậm chất hành động, những chiến thắng vang
-                dội, và những khoảnh khắc không thể nào quên mà chúng tôi đã trải qua cùng nhau. Chúng tôi không chỉ là
-                những người chơi game, mà còn là một gia đình, nơi mà mỗi thành viên đều có vị trí đặc biệt, và sự gắn
-                bó này là điều làm nên sức mạnh thật sự của Yang Ho Mom.
+                Chúng tôi sẽ kể cho bạn những câu chuyện phiêu lưu đậm chất hành động, những chiến thắng vang dội, và
+                những khoảnh khắc không thể nào quên mà chúng tôi đã trải qua cùng nhau. Chúng tôi không chỉ là những
+                người chơi game, mà còn là một gia đình, nơi mà mỗi thành viên đều có vị trí đặc biệt, và sự gắn bó này
+                là điều làm nên sức mạnh thật sự của Yang Ho Mom.
                 <br>
                 <br>
-                Dù bạn là người mới hay một game thủ kỳ cựu, trang web này sẽ truyền cảm hứng cho bạn với những
-                chiến tích của chúng tôi, và biết đâu, bạn sẽ muốn gia nhập vào hành trình đầy kịch tính này cùng
-                chúng tôi. Chào mừng bạn đến với Yang Ho Mom – nơi mà tinh thần đồng đội và sự nhiệt huyết không bao
-                giờ tắt!
+                Dù bạn là người mới hay một game thủ kỳ cựu, trang web này sẽ truyền cảm hứng cho bạn với những chiến
+                tích của chúng tôi, và biết đâu, bạn sẽ muốn gia nhập vào hành trình đầy kịch tính này cùng chúng tôi.
+                Chào mừng bạn đến với Yang Ho Mom – nơi mà tinh thần đồng đội và sự nhiệt huyết không bao giờ tắt!
             </p>
             <div class="social-icons">
                 <a href="https://www.youtube.com/@cuonggquocc2825/videos"><i class="fa-brands fa-youtube"></i></a>
@@ -56,28 +55,42 @@
                 <a href="https://vlxx.lol/xnxx/"><i class="fa-brands fa-x-twitter"></i></a>
                 <a href="https://javhdz.cc/"><i class="fa-brands fa-instagram"></i></a>
             </div>
+
             <!-- a button that cliked to show a popup notification in browser -->
             <a href="#" class="btn" id="notification">Click 10 cái nhận quà!</a>
             <!-- script -->
+
             <script>
-                const notification = document.getElementById('notification');
-                notification.addEventListener('click', () => {
-                    Notification.requestPermission().then((result) => {
-                        if (result === 'granted') {
-                            randomNotification();
+                // get the button
+                var btn = document.getElementById("notification");
+
+                // get the notification
+                var notification = new Notification("Chúc mừng bạn đã nhận được quà từ Yang Ho Mom!");
+
+                // check if the browser supports notifications
+                if (!("Notification" in window)) {
+                    alert("This browser does not support desktop notification");
+                }
+
+                // check whether notification permissions have already been granted
+                else if (Notification.permission === "granted") {
+                    // If it's okay let's create a notification
+                    var notification = new Notification("Chúc mừng bạn đã nhận được quà từ Yang Ho Mom!");
+                }
+
+                // Otherwise, we need to ask the user for permission
+                else if (Notification.permission !== "denied") {
+                    Notification.requestPermission().then(function (permission) {
+                        // If the user accepts, let's create a notification
+                        if (permission === "granted") {
+                            var notification = new Notification("Chúc mừng bạn đã nhận được quà từ Yang Ho Mom!");
                         }
                     });
-                });
+                }
 
-                function randomNotification() {
-                    notification.onclick = (e) => {
-                        e.preventDefault();
-                        const options = {
-                            body: `CLICK CON CACCCC`,
-                            icon: 'img/v1.png'
-                        };
-                        new Notification('Hello world!', options);
-                    };
+                // show the notification when the button is clicked
+                btn.onclick = function () {
+                    notification;
                 }
             </script>
 
