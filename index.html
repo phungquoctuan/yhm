@@ -61,36 +61,25 @@
             <!-- script -->
 
             <script>
-                // get the button
-                var btn = document.getElementById("notification");
-
-                // get the notification
-                var notification = new Notification("Chúc mừng bạn đã nhận được quà từ Yang Ho Mom!");
-
-                // check if the browser supports notifications
-                if (!("Notification" in window)) {
-                    alert("This browser does not support desktop notification");
-                }
-
-                // check whether notification permissions have already been granted
-                else if (Notification.permission === "granted") {
-                    // If it's okay let's create a notification
-                    var notification = new Notification("Chúc mừng bạn đã nhận được quà từ Yang Ho Mom!");
-                }
-
-                // Otherwise, we need to ask the user for permission
-                else if (Notification.permission !== "denied") {
-                    Notification.requestPermission().then(function (permission) {
-                        // If the user accepts, let's create a notification
-                        if (permission === "granted") {
-                            var notification = new Notification("Chúc mừng bạn đã nhận được quà từ Yang Ho Mom!");
+                const btn = document.getElementById('notification');
+                btn.addEventListener('click', () => {
+                    Notification.requestPermission().then((result) => {
+                        if (result === 'granted') {
+                            randomNotification();
                         }
                     });
-                }
+                });
 
-                // show the notification when the button is clicked
-                btn.onclick = function () {
-                    notification;
+                function randomNotification() {
+                    const randomItem = Math.floor(Math.random() * 10);
+                    const notifTitle = 'Chúc mừng bạn đã nhận được quà!';
+                    const notifBody = `Bạn đã nhận được ${randomItem} cục cứt từ Yang Ho Mom!`;
+                    const options = {
+                        body: notifBody,
+                        icon: 'public/vite.svg'
+                    };
+
+                    new Notification(notifTitle, options);
                 }
             </script>
 
